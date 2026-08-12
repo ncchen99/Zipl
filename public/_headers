@@ -12,3 +12,12 @@
 # 部署後才不會有人看到舊版介面（304 回應一樣是免費的靜態流量）
 /assets/*
   Cache-Control: public, max-age=0, must-revalidate
+
+/sw.js
+  Cache-Control: public, max-age=0, must-revalidate
+  Service-Worker-Allowed: /
+
+/manifest.webmanifest
+  Content-Type: application/manifest+json; charset=utf-8
+  Cache-Control: public, max-age=0, must-revalidate
+

@@ -355,3 +355,13 @@ if (token) {
   el.gate.hidden = false;
   el.pass.focus();
 }
+
+/* ── Service Worker 註冊 (PWA 支援) ────────────────────────── */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch((err) => {
+      console.warn('Service Worker 註冊失敗:', err);
+    });
+  });
+}
+
