@@ -1,0 +1,38 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      deployments: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 沒有 build step：public/ 是純靜態檔，functions/ 由 wrangler 自動打包。
+      # wrangler-action 會自己安裝 wrangler，不需要先 npm install。
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: '4.122.0'
+          # push 到 main → 正式站；PR → 該分支專屬的 preview 網址
+          command: >-
+            pages deploy
+            --project-name=zipl
+            --branch=${{ github.head_ref || github.ref_name }}

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>zipl · 短網址</title>
+<meta name="description" content="極簡短網址工具：貼上、按 Enter、已複製。">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0f766e">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/jakarta-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/app.css">
+</head>
+<body>
+
+<a class="skip" href="#url">跳到主要內容</a>
+
+<header class="bar">
+  <span class="brand">
+    <svg class="mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M9.5 14.5 14.5 9.5" />
+      <path d="M11 6.5 12.8 4.7a4.6 4.6 0 0 1 6.5 6.5L17.5 13" />
+      <path d="M13 17.5 11.2 19.3a4.6 4.6 0 0 1-6.5-6.5L6.5 11" />
+    </svg>
+    zipl
+  </span>
+  <button type="button" id="lock" class="ghost" hidden>鎖定</button>
+</header>
+
+<main>
+
+  <!-- ── 解鎖 ─────────────────────────────────────────── -->
+  <section id="gate" class="gate" hidden>
+    <h1 class="gate-title">請先解鎖</h1>
+    <p class="gate-sub">輸入通行碼即可開始建立短網址。這台裝置只需要輸入一次。</p>
+    <form id="gate-form" novalidate>
+      <label class="label" for="pass">通行碼</label>
+      <div class="row">
+        <input id="pass" class="field" type="password" autocomplete="current-password"
+               placeholder="••••••••" required>
+        <button class="primary" type="submit">解鎖</button>
+      </div>
+      <p id="gate-error" class="error" role="alert" hidden></p>
+    </form>
+  </section>
+
+  <!-- ── 主畫面 ───────────────────────────────────────── -->
+  <section id="app" hidden>
+
+    <h1 class="title">把長網址變短</h1>
+
+    <form id="shorten" novalidate>
+      <label class="sr-only" for="url">要縮短的網址</label>
+      <div class="row">
+        <input id="url" class="field" type="text" inputmode="url" enterkeyhint="go"
+               autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false"
+               placeholder="貼上網址，按 Enter" required>
+        <button class="primary" id="go" type="submit">
+          <span class="go-label">縮短</span>
+          <span class="spinner" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <div class="opt">
+        <button type="button" id="custom-toggle" class="linkish" aria-expanded="false" aria-controls="custom-wrap">
+          自訂短碼
+        </button>
+        <div id="custom-wrap" class="custom" hidden>
+          <label class="sr-only" for="code">自訂短碼</label>
+          <span class="prefix" id="origin-hint">/</span>
+          <input id="code" class="field small" type="text" autocomplete="off" autocapitalize="off"
+                 autocorrect="off" spellcheck="false" placeholder="my-link" maxlength="48"
+                 pattern="[A-Za-z0-9_-]+">
+        </div>
+      </div>
+
+      <p id="error" class="error" role="alert" hidden></p>
+    </form>
+
+    <!-- 結果 -->
+    <div id="result" class="result" hidden>
+      <p class="result-flag" id="result-flag">已複製到剪貼簿</p>
+      <a class="result-url" id="result-url" href="#" target="_blank" rel="noopener noreferrer"></a>
+      <p class="result-src" id="result-src"></p>
+      <div class="result-actions">
+        <button type="button" class="primary" id="result-copy">複製</button>
+        <a class="secondary" id="result-open" href="#" target="_blank" rel="noopener noreferrer">開啟</a>
+      </div>
+    </div>
+
+    <!-- 清單 -->
+    <section class="recent" aria-labelledby="recent-h">
+      <div class="recent-head">
+        <h2 id="recent-h">最近</h2>
+        <span class="count" id="count"></span>
+      </div>
+      <ul id="list" class="list"></ul>
+      <p id="list-empty" class="empty" hidden>還沒有任何短網址。</p>
+      <p id="list-error" class="error" role="alert" hidden></p>
+    </section>
+
+  </section>
+</main>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<!-- 清單項目樣板 -->
+<template id="row-tpl">
+  <li class="item">
+    <button type="button" class="item-main" title="點一下複製短網址">
+      <span class="item-code"></span>
+      <span class="item-url"></span>
+    </button>
+    <button type="button" class="item-del ghost" aria-label="刪除">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="icon">
+        <path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+      </svg>
+    </button>
+  </li>
+</template>
+
+<script src="/assets/app.js" defer></script>
+</body>
+</html>

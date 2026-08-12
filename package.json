@@ -1,0 +1,15 @@
+{
+  "name": "zipl",
+  "version": "1.0.0",
+  "private": true,
+  "description": "極簡短網址服務，跑在 Cloudflare Pages + Workers KV 上",
+  "scripts": {
+    "dev": "wrangler pages dev",
+    "deploy": "wrangler pages deploy --project-name=zipl --branch=main",
+    "tail": "wrangler pages deployment tail --project-name=zipl",
+    "secret": "wrangler pages secret put ADMIN_TOKEN --project-name=zipl"
+  },
+  "devDependencies": {
+    "wrangler": "^4.122.0"
+  }
+}

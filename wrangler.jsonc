@@ -1,0 +1,29 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "zipl",
+  "compatibility_date": "2026-08-01",
+  "pages_build_output_dir": "./public",
+
+  // 頂層設定 = 本機 `wrangler pages dev` 使用
+  "kv_namespaces": [
+    {
+      "binding": "LINKS",
+      "id": "14a6bb2c3f7b47fdacdfcf57c7605701",
+      "preview_id": "bcf8b46cf7f346688c17a7db575c396c"
+    }
+  ],
+
+  // Pages 的環境設定不會繼承頂層，每個環境都要完整寫一次
+  "env": {
+    "production": {
+      "kv_namespaces": [
+        { "binding": "LINKS", "id": "14a6bb2c3f7b47fdacdfcf57c7605701" }
+      ]
+    },
+    "preview": {
+      "kv_namespaces": [
+        { "binding": "LINKS", "id": "bcf8b46cf7f346688c17a7db575c396c" }
+      ]
+    }
+  }
+}
