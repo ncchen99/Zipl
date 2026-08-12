@@ -120,7 +120,16 @@ npm run deploy
 | Secret | 怎麼拿 |
 |--------|--------|
 | `CLOUDFLARE_ACCOUNT_ID` | Cloudflare 儀表板右側，或 `wrangler whoami` |
-| `CLOUDFLARE_API_TOKEN` | 儀表板 → My Profile → API Tokens → Create Token → 範本 **Edit Cloudflare Workers** |
+| `CLOUDFLARE_API_TOKEN` | 儀表板 → My Profile → API Tokens → **Create Custom Token** |
+
+**`CLOUDFLARE_API_TOKEN` 權限設定（Permissions）：**
+- **Account** ➔ **Cloudflare Pages** ➔ **Edit** （必要）
+- **Account** ➔ **Workers KV Storage** ➔ **Edit** （必要）
+- **Account** ➔ **Workers Scripts** ➔ **Edit** （必要）
+- **User** ➔ **User Details** ➔ **Read** （建議）
+- **User** ➔ **Memberships** ➔ **Read** （建議）
+
+Account Resources 選擇 **All accounts** 或指定您的帳號。
 
 ### 更換通行碼
 
