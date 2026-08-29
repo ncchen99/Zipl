@@ -6,6 +6,8 @@
 
 線上位址：<https://zipl.pages.dev>
 
+![貼上網址、按 Enter、已複製](docs/screenshots/result.png)
+
 ---
 
 ## 操作流程
@@ -27,6 +29,10 @@
 - 按 `/` 隨時跳回輸入框
 - 深色 / 淺色模式跟隨系統
 - 右上角「鎖定」可清除這台裝置記住的通行碼
+
+第一次在一台裝置上使用時會先要通行碼，解鎖後這台裝置就不再問：
+
+<img src="docs/screenshots/gate.png" width="420" alt="解鎖畫面">&nbsp;<img src="docs/screenshots/home.png" width="420" alt="解鎖後的主畫面">
 
 ---
 
