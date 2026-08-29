@@ -32,7 +32,16 @@
 
 第一次在一台裝置上使用時會先要通行碼，解鎖後這台裝置就不再問：
 
-<img src="docs/screenshots/gate.png" width="420" alt="解鎖畫面">&nbsp;<img src="docs/screenshots/home.png" width="420" alt="解鎖後的主畫面">
+<table>
+  <tr>
+    <td valign="top" width="50%"><img src="docs/screenshots/gate.png" width="100%" alt="解鎖畫面"></td>
+    <td valign="top" width="50%"><img src="docs/screenshots/home.png" width="100%" alt="解鎖後的主畫面"></td>
+  </tr>
+  <tr>
+    <td valign="top" align="center">第一次使用：輸入通行碼</td>
+    <td valign="top" align="center">解鎖後的主畫面</td>
+  </tr>
+</table>
 
 ---
 
