@@ -1,10 +1,12 @@
-const CACHE_NAME = 'zipl-v2';
+const CACHE_NAME = 'zipl-v3';
 
 const STATIC_ASSETS = [
   '/',
   '/index.html',
   '/404.html',
   '/manifest.webmanifest',
+  '/manifest-dark.webmanifest',
+  '/assets/manifest-scheme.js',
   '/assets/app.css',
   '/assets/app.js',
   '/assets/favicon.svg',

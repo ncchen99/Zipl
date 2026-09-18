@@ -21,3 +21,6 @@
   Content-Type: application/manifest+json; charset=utf-8
   Cache-Control: public, max-age=0, must-revalidate
 
+/manifest-dark.webmanifest
+  Content-Type: application/manifest+json; charset=utf-8
+  Cache-Control: public, max-age=0, must-revalidate
